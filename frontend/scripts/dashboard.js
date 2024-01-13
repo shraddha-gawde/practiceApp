@@ -177,56 +177,59 @@ function editNotes(book){
   
 const logoutbtn = document.getElementById('logoutbtn');
 
-// logoutbtn.addEventListener('click', (e) => {
-//     e.preventDefault();
+logoutbtn.addEventListener('click', (e) => {
+    e.preventDefault();
 
-//     fetch('https://practice-mifg.onrender.com/users/logout', {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             credentials: 'include',
-//         },
-//          // Send cookies with the request
-//         // body: JSON.stringify({
-//         //     access_token: localStorage.getItem('token'),
-//         //     refresh_token: localStorage.getItem('token2'),
-//         // }),
-//     })
-//     .then((response) => {
-//         if (response.ok) {
-//             return response.json();
-//         } else {
-//             throw new Error(`Logout failed: ${response.statusText}`);
-//         }
-//     })
-//     .then((result) => {
-//         console.log(result.msg); // Display the success message
-//         // Redirect or perform any other action after successful logout
-//         location.href = '/index.html';
-//     })
-//     .catch((error) => {
-//         console.error(error);
-//     });
-// });
+    fetch('https://practice-mifg.onrender.com/users/logout', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            // credentials: 'include',
+            "authorization": `Bearer ${localStorage.getItem("token")}`,
+            "authorization": `Bearer ${localStorage.getItem("token2")}`,
+        },
+         // Send cookies with the request
+        // body: JSON.stringify({
+        //     access_token: localStorage.getItem('token'),
+        //     refresh_token: localStorage.getItem('token2'),
+        // }),
+    })
+    .then((response) => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error(`Logout failed: ${response.statusText}`);
+        }
+    })
+    .then((result) => {
+        console.log(result.msg); // Display the success message
+        // Redirect or perform any other action after successful logout
+        location.href = '/index.html';
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+});
 // const logoutBtn = document.getElementById('logoutBtn');
 
-logoutbtn.addEventListener('click', async () => {
-    try {
-        const response = await fetch('https://practice-mifg.onrender.com/users/logout', {
-            method: 'GET',
-            credentials: 'include', // include cookies in the request
-        });
+// logoutbtn.addEventListener('click', async () => {
+//     try {
+//         const response = await fetch('https://practice-mifg.onrender.com/users/logout', {
+//             method: 'GET',
+//             // credentials: 'include',
+//              // include cookies in the request
+//         });
 
-        if (response.ok) {
-            const result = await response.json();
-            console.log(result.msg); // Display the success message
-            // Redirect or perform any other action after successful logout
-            window.location.href = '/index.html'; // Redirect to the login page
-        } else {
-            const error = await response.json();
-            console.error(error.error);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-});
+//         if (response.ok) {
+//             const result = await response.json();
+//             console.log(result.msg); // Display the success message
+//             // Redirect or perform any other action after successful logout
+//             window.location.href = '/index.html'; // Redirect to the login page
+//         } else {
+//             const error = await response.json();
+//             console.error(error.error);
+//         }
+//     } catch (error) {
+//         console.error(error);
+//     }
+// });

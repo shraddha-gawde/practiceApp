@@ -63,8 +63,8 @@ userRouter.post("/login", async(req,res)=>{
 })
 
 userRouter.get("/logout", async (req, res) => {
-    const access_token = req.cookies.access_token;
-    const refresh_token = req.cookies.refresh_token;
+    const access_token = req.headers.authorization?.split(" ")[1]
+    const refresh_token = req.headers.authorization?.split(" ")[2]
   
     try {
       const blacklist = new blacklistModel({ access_token, refresh_token });
