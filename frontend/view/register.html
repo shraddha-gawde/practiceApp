@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftNote- register and sign in</title>
+    <link rel="stylesheet" href="../styles/loginSignup.css" />
+    <link rel="stylesheet" href="../styles/about.css">
+    <link rel="shortcut icon" href="../styles/01.jpg" type="image/x-icon">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+   
+              
+
+              <!-- <form id="RegForm"> -->
+                <input id="r_name" type="text" placeholder="Username" />
+                <input id="r_email" type="email" placeholder="Email" />
+                <input id="r_password" type="password" placeholder="Password" />
+                <select name="roles" id="role-select">
+                  <option value="">--Please choose role--</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+                <button type="submit" class="btn" id="registerbtn">
+                  Register
+                </button>
+              
+    <form id="LoginForm">
+      <input
+        id="l_email"
+        type="text"
+        placeholder="Enter your e-mail"
+      />
+      <input
+        id="l_password"
+        type="password"
+        placeholder="Enter your Password"
+      />
+      <button class="btn" id="loginbtn">Login</button>
+      <a href="">Forget Password</a>
+    </form>
+    
+
+
+    <!-- Toggle Form -->
+    <script src="../scripts/register.js">
+   
+
+    </script>
+  </body>
+</html>
