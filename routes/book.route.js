@@ -9,7 +9,7 @@ const { access } = require("../middlewears/access.middlewear")
 
 const cors = require("cors")
 const bookRouter = express.Router()
-app.use(cors())
+bookRouter.use(cors())
 bookRouter.get("/", auth, access(["reader", "librarian", "admin"]),async(req, res)=>{
     try{
         const book = await bookModel.find(req.query)
