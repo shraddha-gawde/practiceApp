@@ -4,7 +4,9 @@ const access = (permitRole)=>{
             next()
         }
         else{
+            window.alert("you are not authorized")
             res.json({msg:"you are not authorized"})
+            
         }
     }
 }

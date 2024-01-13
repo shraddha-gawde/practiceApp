@@ -178,58 +178,37 @@ function editNotes(book){
 const logoutbtn = document.getElementById('logoutbtn');
 
 logoutbtn.addEventListener('click', (e) => {
+
     e.preventDefault();
 
+    const accessToken = localStorage.getItem("token");
+    const refreshToken = localStorage.getItem("token2");
+    
     fetch('https://practice-mifg.onrender.com/users/logout', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            // credentials: 'include',
-            "authorization": `Bearer ${localStorage.getItem("token")}`,
-            "authorization": `Bearer ${localStorage.getItem("token2")}`,
+            
+            'Authorization': `Bearer ${accessToken} ${refreshToken}`,
+            
         },
-         // Send cookies with the request
-        // body: JSON.stringify({
-        //     access_token: localStorage.getItem('token'),
-        //     refresh_token: localStorage.getItem('token2'),
-        // }),
+        
     })
     .then((response) => {
         if (response.ok) {
+            localStorage.removeItem("token")
+            localStorage.removeItem("token2")
             return response.json();
+            
         } else {
             throw new Error(`Logout failed: ${response.statusText}`);
         }
     })
     .then((result) => {
-        console.log(result.msg); // Display the success message
-        // Redirect or perform any other action after successful logout
+        console.log(result.msg); 
         location.href = '/index.html';
     })
     .catch((error) => {
         console.error(error);
     });
 });
-// const logoutBtn = document.getElementById('logoutBtn');
-
-// logoutbtn.addEventListener('click', async () => {
-//     try {
-//         const response = await fetch('https://practice-mifg.onrender.com/users/logout', {
-//             method: 'GET',
-//             // credentials: 'include',
-//              // include cookies in the request
-//         });
-
-//         if (response.ok) {
-//             const result = await response.json();
-//             console.log(result.msg); // Display the success message
-//             // Redirect or perform any other action after successful logout
-//             window.location.href = '/index.html'; // Redirect to the login page
-//         } else {
-//             const error = await response.json();
-//             console.error(error.error);
-//         }
-//     } catch (error) {
-//         console.error(error);
-//     }
-// });
