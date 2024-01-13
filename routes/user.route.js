@@ -20,7 +20,7 @@ userRouter.post("/register", async(req, res)=>{
         }
         bcrypt.hash(password, 10, async(err, hash)=>{
             
-                const user = new userModel({name,email,password:hash,city,age,role})
+                const user = new userModel({name,email,password:hash,role})
                 await user.save()
                 res.status(200).json({msg: "The new user has been registered",registeredUser:user})
             }
@@ -42,8 +42,8 @@ userRouter.post("/login", async(req,res)=>{
                     res.status(200).json({msg:"user Does not exists!!!"})
                 }
                 if(result){
-                    const access_token = jwt.sign({ userID:user._id }, "shraddhaBooks", {expiresIn : "120s"});
-                    const refresh_token = jwt.sign({ userID:user._id }, "shraddhaBooks",{ expiresIn : "300s"});
+                    const access_token = jwt.sign({ userID:user._id }, "shraddhaBooks", {expiresIn : "5d"});
+                    const refresh_token = jwt.sign({ userID:user._id }, "shraddhaBooks",{ expiresIn : "7d"});
 
                     res.cookie("access_token", access_token, {httpOnly: true})
                     res.cookie("refresh_token", refresh_token, {httpOnly: true})

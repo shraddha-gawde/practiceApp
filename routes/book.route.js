@@ -7,8 +7,9 @@ const bcrypt = require("bcrypt")
 const { auth } = require("../middlewears/auth.middlewear")
 const { access } = require("../middlewears/access.middlewear")
 
+const cors = require("cors")
 const bookRouter = express.Router()
-
+app.use(cors())
 bookRouter.get("/", auth, access(["reader", "librarian", "admin"]),async(req, res)=>{
     try{
         const book = await bookModel.find(req.query)

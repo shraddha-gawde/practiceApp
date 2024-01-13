@@ -4,7 +4,7 @@ const regbtn = document.getElementById("registerbtn");
 regbtn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    fetch("https://note-app-2fp7.onrender.com/users/register", {
+    fetch("https://practice-mifg.onrender.com/users/register", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -39,7 +39,7 @@ const logbtn = document.getElementById("loginbtn");
 logbtn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    fetch("https://note-app-2fp7.onrender.com/users/login", {
+    fetch("https://practice-mifg.onrender.com/users/login", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -51,18 +51,20 @@ logbtn.addEventListener("click", (e) => {
     })
     .then((response) => {
         if (!response.ok) {
-            window.alert("please enter right credintials");
-            throw new Error(`Login failed: ${response.statusText}`);
+            // window.alert("please enter right credintials");
+            // throw new Error(`Login failed: ${response.statusText}`);
+            console.log("no")
         }
-
+        
         return response.json();
     })
+    // .then((res)=>res.json())
     .then((data) => {
         console.log(data);
 
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("token2", data.refresh_token);
-        localStorage.setItem("name", data.name);
+        localStorage.setItem("name", data.username);
         location.href = "./notesDashboard.html";
     })
     .catch((err) => {
