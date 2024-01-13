@@ -23,8 +23,8 @@ addNoteDiv.addEventListener("click", (e) => {
     })
     .then((response) => {
         if (!response.ok) {
-            window.alert("please enter right credintials");
-            throw new Error(`Registration failed: ${response.statusText}`);
+            window.alert("you are not authorized");
+            throw new Error(`${response.statusText}`);
         }
 
         return response.json();
@@ -142,7 +142,16 @@ function editNotes(book){
        })
         getData()
         window.location.reload();
+        if (!res.ok) {
+            window.alert("you are not authorized");
+            throw new Error(`${response.statusText}`);
+        }
+
+        return response.json();
       }
+      
+        
+    
       catch(err){
         console.log(err);
       }
@@ -158,6 +167,7 @@ function editNotes(book){
     })
     .then((response) => {
         if (!response.ok) {
+            window.alert("you are not authorized");
             throw new Error(`Note deletion failed: ${response.statusText}`);
         }
 
