@@ -6,7 +6,12 @@ const cors = require("cors")
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: 'http://127.0.0.1:5501', // Adjust with your frontend origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+}))
 
 app.get("/", (req, res)=>{
     res

@@ -221,7 +221,7 @@ logoutbtn.addEventListener('click', async () => {
             const result = await response.json();
             console.log(result.msg); // Display the success message
             // Redirect or perform any other action after successful logout
-            window.location.href = '/login.html'; // Redirect to the login page
+            window.location.href = '/index.html'; // Redirect to the login page
         } else {
             const error = await response.json();
             console.error(error.error);
